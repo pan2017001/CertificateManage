@@ -7,7 +7,6 @@ D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatema
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\config\SpringContextHolder.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\utils\ImgUtil.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\aspect\HttpAspect.java
-D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\thread\SocketServerThread.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\utils\ResourceUtil.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\constant\Constant.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\utils\DateFormatUtil.java
@@ -16,7 +15,6 @@ D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatema
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\utils\CacheUtil.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\controller\PageController.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\dao\CertificateDao.java
-D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\test\TestCode.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\model\CertificateVo.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\utils\SpringUtil.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\model\CertificateInfo.java
@@ -25,18 +23,13 @@ D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatema
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\controller\CertificateController.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\thread\SysInitThread.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\config\ExecutorConfig.java
-D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\thread\FileTransferClient.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\dao\UserDao.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\listener\ApplicationEventListener.java
-D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\test\TestClient.java
-D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\test\MyTest.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\service\SysInitService.java
-D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\thread\FileTransferServer.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\MyApplication.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\utils\HttpUtil.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\config\FileServerConfig.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\utils\ResultMsgUtil.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\utils\HttpsUtils.java
-D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\test\SocketLoginClient.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\utils\BaseUtil.java
 D:\dev\workspace\CertificateManage\src\main\java\com\zhichenhaixin\certificatemanage\model\User.java

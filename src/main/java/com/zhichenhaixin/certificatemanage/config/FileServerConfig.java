@@ -27,11 +27,12 @@ public class FileServerConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    	//可以配置多个路由
-    	//配置外部文件路径转URL访问
-        registry.addResourceHandler("/" + this.getLocalFileServerPath() + "/**").addResourceLocations("file:" + this.getLocalFileServerDir() + "/");
+    	//可以配置多个路由   当有多个路由时，localFileServerPath不能为空
+    	
         //配置项目内部静态文件如js,css路径  防止html打开时，加载不到js,css
         registry.addResourceHandler("/" + this.getLocalFileServerPath() + "/**").addResourceLocations( this.getLocalStaticPath() + "/");
+        //配置外部文件路径转URL访问
+        registry.addResourceHandler("/" + this.getLocalFileServerPath() + "/**").addResourceLocations("file:" + this.getLocalFileServerDir() + "/");
 
         super.addResourceHandlers(registry);
     }
