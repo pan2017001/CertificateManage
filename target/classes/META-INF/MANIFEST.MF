@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: CertificateManage
+Implementation-Version: 1.0.1
+Built-By: zchx
+Implementation-Vendor-Id: com.zhichenhaixin
+Build-Jdk: 1.8.0_101
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/CertificateManage
+Created-By: Maven Integration for Eclipse
+

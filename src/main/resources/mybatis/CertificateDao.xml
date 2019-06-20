@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhichenhaixin.certificatemanage.dao.CertificateDao" >
+
+  <resultMap id="BaseResultMap" type="com.zhichenhaixin.certificatemanage.model.CertificateInfo" autoMapping="true">
+        <id property="id" column="id"/>
+		<result column="user_name" jdbcType="VARCHAR" property="userName" />
+		<result column="country" jdbcType="VARCHAR" property="country" />
+		<result column="country_name" jdbcType="VARCHAR" property="countryName" />
+		<result column="email" jdbcType="INTEGER" property="email" />
+		<result column="locality" jdbcType="VARCHAR" property="locality" />
+		<result column="org_name" jdbcType="VARCHAR" property="orgName" />
+		<result column="org_unit" jdbcType="VARCHAR" property="orgUnit" />
+		<result column="province" jdbcType="VARCHAR" property="province" />
+		<result column="source_key" jdbcType="VARCHAR" property="sourceKey" />
+		<result column="type" jdbcType="VARCHAR" property="type" />
+		<result column="vaild_days" jdbcType="INTEGER" property="validDays" />
+		<result column="ip" jdbcType="INTEGER" property="ip" />
+		<result column="time" jdbcType="BIGINT" property="time" />
+		<result column="key_file" jdbcType="VARCHAR" property="keyFile" />      
+		<result column="key_file_content" jdbcType="VARCHAR" property="keyFileContent" />      
+		<result column="ca_cert_file" jdbcType="VARCHAR" property="caCertFile" />      
+		<result column="ca_cert_file_content" jdbcType="VARCHAR" property="caCertFileContent" />      
+		<result column="ca_key_file" jdbcType="VARCHAR" property="caKeyFile" />      
+		<result column="ca_key_file_content" jdbcType="VARCHAR" property="caKeyFileContent" />      
+		<result column="cert_file" jdbcType="VARCHAR" property="certFile" />      
+		<result column="cert_file_content" jdbcType="VARCHAR" property="certFileContent" />      
+  </resultMap>
+  
+  	<sql id="Base_Column_List">
+		id, user_name, country,country_name ,email,locality,org_name,org_unit,province,
+		source_key,type,vaild_days,ip,time,key_file,key_file_content,ca_cert_file,ca_cert_file_content,
+		ca_key_file,ca_key_file_content,cert_file,cert_file_content
+	</sql>
+
+	<select id="query" parameterType="com.zhichenhaixin.certificatemanage.model.CertificateVo"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from com_info_certificate
+		<where>
+			<if test="null != startTime">time &gt;= #{startTime} and </if>			
+			<if test="null != orgName">org_name =#{orgName} and </if>
+			<if test="null != type">
+				<if test="'server' == type">
+					 type =#{type} and
+					 <if test="null != userName">ip LIKE #{userName} and </if>
+				</if>
+				<if test="'ca' == type or 'client' == type">
+					 type =#{type} and
+					 <if test="null != userName">user_name LIKE #{userName} and </if>
+				</if>
+			 </if>
+			<if test="null != endTime">time &lt;= #{endTime}</if>
+		</where>
+		order by time desc
+	</select>
+	<select id="count" parameterType="com.zhichenhaixin.certificatemanage.model.CertificateVo"
+		resultType="java.lang.Integer">
+		select count(id) from com_info_certificate
+		<where>
+			<if test="null != startTime">time &gt;= #{startTime} and </if>			
+			<if test="null != orgName">org_name =#{orgName} and </if>
+			<if test="null != type">
+				<if test="'server' == type">
+					 type =#{type} and
+					 <if test="null != userName">ip LIKE #{userName} and </if>
+				</if>
+				<if test="'ca' == type or 'client' == type">
+					 type =#{type} and
+					 <if test="null != userName">user_name LIKE #{userName} and </if>
+				</if>
+			 </if>
+			<if test="null != endTime">time &lt;= #{endTime}</if>
+		</where>
+		
+	</select>
+	<select id="queryById" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from com_info_certificate
+		where id = #{id}
+	</select>
+   <insert id="insert" parameterType="com.zhichenhaixin.certificatemanage.model.CertificateInfo" useGeneratedKeys="true" keyProperty="id">
+		insert into com_info_certificate
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="null != userName">user_name,</if>
+			<if test="null != country">country,</if>
+			<if test="null != countryName">country_name,</if>
+			<if test="null != email">email,</if>
+			<if test="null != locality">locality,</if>
+			<if test="null != orgName">org_name,</if>
+			<if test="null != orgUnit">org_unit,</if>
+			<if test="null != province">province,</if>
+			<if test="null != sourceKey">source_key,</if>
+			<if test="null != type">type,</if>
+			<if test="null != ip">ip,</if>
+			<if test="null != validDays">vaild_days,</if>
+			<if test="null != time">time,</if>
+			<if test="null != keyFile">key_file,</if>
+			<if test="null != keyFileContent">key_file_content,</if>
+			<if test="null != caCertFile">ca_cert_file,</if>
+			<if test="null != caCertFileContent">ca_cert_file_content,</if>
+			<if test="null != caKeyFile">ca_key_file,</if>
+			<if test="null != caKeyFileContent">ca_key_file_content,</if>
+			<if test="null != certFile">cert_file,</if>
+			<if test="null != certFileContent">cert_file_content,</if>
+		</trim>
+		<trim prefix="SELECT" suffix="" suffixOverrides=",">
+			<if test="null != userName">#{userName},</if>
+			<if test="null != country">#{country},</if>
+			<if test="null != countryName">#{countryName},</if>
+			<if test="null != email">#{email},</if>
+			<if test="null != locality">#{locality},</if>
+			<if test="null != orgName">#{orgName},</if>
+			<if test="null != orgUnit">#{orgUnit},</if>
+			<if test="null != province">#{province},</if>
+			<if test="null != sourceKey">#{sourceKey},</if>
+			<if test="null != type">#{type},</if>
+			<if test="null != ip">#{ip},</if>
+			<if test="null != validDays">#{validDays},</if>
+			<if test="null != time">#{time},</if>
+			<if test="null != keyFile">#{keyFile},</if>
+			<if test="null != keyFileContent">#{keyFileContent},</if>
+			<if test="null != caCertFile">#{caCertFile},</if>
+			<if test="null != caCertFileContent">#{caCertFileContent},</if>
+			<if test="null != caKeyFile">#{caKeyFile},</if>
+			<if test="null != caKeyFileContent">#{caKeyFileContent},</if>
+			<if test="null != certFile">#{certFile},</if>
+			<if test="null != certFileContent">#{certFileContent},</if>
+		</trim>	
+	    <where>
+			<if test="'server' == type">
+				 NOT EXISTS(select t1.id from com_info_certificate t1 WHERE t1.ip = #{ip} and t1.type = #{type})
+			</if>
+			<if test="'client' == type">
+				 NOT EXISTS(select t1.id from com_info_certificate t1 WHERE t1.user_name = #{userName} and t1.type = #{type})
+			</if>
+		</where>	
+	</insert>
+	
+	<update id="update" parameterType="com.zhichenhaixin.certificatemanage.model.CertificateInfo">
+		update com_info_certificate
+			<trim prefix="set" suffixOverrides=",">
+				<if test="null != userName">user_name = #{userName},</if>
+				<if test="null != country">country = #{country},</if>
+				<if test="null != countryName">country_name = #{countryName},</if>
+				<if test="null != email">email = #{email},</if>
+				<if test="null != locality">locality = #{locality},</if>
+				<if test="null != orgName">org_name = #{orgName},</if>
+				<if test="null != orgUnit">org_unit = #{orgUnit},</if>
+				<if test="null != province">province = #{province},</if>
+				<if test="null != sourceKey">source_key = #{sourceKey},</if>
+				<if test="null != type">type = #{type},</if>
+				<if test="null != validDays">vaild_days = #{validDays},</if>
+				<if test="null != ip">ip = #{ip},</if>
+				<if test="null != time">time = #{time},</if>
+				<if test="null != keyFile">key_file = #{keyFile},</if>
+				<if test="null != keyFileContent">key_file_content = #{keyFileContent},</if>
+				<if test="null != caCertFile">ca_cert_file = #{caCertFile},</if>
+				<if test="null != caCertFileContent">ca_cert_file_content = #{caCertFileContent},</if>
+				<if test="null != caKeyFile">ca_key_file = #{caKeyFile},</if>
+				<if test="null != caKeyFileContent">ca_key_file_content = #{caKeyFileContent},</if>
+				<if test="null != certFile">cert_file = #{certFile},</if>
+				<if test="null != certFileContent">cert_file_content = #{certFileContent},</if>
+			</trim>
+			<where>
+			id =#{id}
+			</where>
+	</update>
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from com_info_certificate where id = #{id}
+	</delete>
+  
+</mapper>

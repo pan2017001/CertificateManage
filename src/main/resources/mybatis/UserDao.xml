@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhichenhaixin.certificatemanage.dao.UserDao" >
+
+
+  <resultMap id="BaseResultMap" type="com.zhichenhaixin.certificatemanage.model.User" >
+        <id column="u_id" jdbcType="INTEGER" property="uId" />
+		<result column="u_name" jdbcType="VARCHAR" property="uName" />
+		<result column="u_pwd" jdbcType="VARCHAR" property="uPwd" />
+		<result column="u_account" jdbcType="VARCHAR" property="uAccount" />
+		<result column="u_sex" jdbcType="INTEGER" property="uSex" />
+		<result column="u_email" jdbcType="VARCHAR" property="uEmail" />
+		<result column="u_phone" jdbcType="VARCHAR" property="uPhone" />
+		<result column="u_birthday" jdbcType="VARCHAR" property="uBirthday" />
+		<result column="u_department" jdbcType="VARCHAR" property="Department" />
+		<result column="u_duty" jdbcType="VARCHAR" property="uDuty" />
+		<result column="u_dutydesc" jdbcType="VARCHAR" property="uDutydesc" />
+		<result column="u_status" jdbcType="INTEGER" property="uStatus" />
+		<result column="u_newpwd" jdbcType="VARCHAR" property="uNewpwd" />
+		<result column="u_confirmpwd" jdbcType="VARCHAR" property="uConfirmpwd" />      
+  </resultMap>
+  
+  	<sql id="Base_Column_List">
+		u_id, u_name, u_pwd, u_account, u_sex, u_email,u_phone,u_birthday,
+		u_department,u_duty,u_dutydesc,u_status,u_newpwd,u_confirmpwd
+	</sql>
+
+	<select id="selectByAccount" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from com_info_user
+		where u_account = #{uAccount,jdbcType=VARCHAR}
+	</select>
+   
+  
+</mapper>
