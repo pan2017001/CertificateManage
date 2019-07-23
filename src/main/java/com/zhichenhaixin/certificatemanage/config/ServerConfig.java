@@ -3,6 +3,7 @@ package com.zhichenhaixin.certificatemanage.config;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ public class ServerConfig implements ApplicationListener<WebServerInitializedEve
     public int getServerPort() {
         return serverPort;
     }
-
+    @Value("${server.port}")
     private int serverPort;
 
     public String getUrl() {
@@ -41,6 +42,6 @@ public class ServerConfig implements ApplicationListener<WebServerInitializedEve
 
     @Override
     public void onApplicationEvent(WebServerInitializedEvent event) {
-        serverPort = event.getWebServer().getPort();
+        //serverPort = event.getWebServer().getPort();
     }
 }

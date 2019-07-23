@@ -20,9 +20,11 @@ import com.zhichenhaixin.certificatemanage.utils.ResourceUtil;
 import com.zhichenhaixin.certificatemanage.utils.ResultMsgUtil;
 import com.zhichenhaixin.certificatemanage.config.ServerConfig;
 /**
- * 数字证书服务类
- * @author pwl
- *
+ * 
+* <p>Title: CertificateService</p> 
+* <p>Description: 数字证书服务类</p>
+* @author pwl
+* @date 2019年6月25日
  */
 @Service("certificateService")
 public class CertificateService {
@@ -35,8 +37,13 @@ public class CertificateService {
 	
     @Value("${server.servlet.context-path}")
     private String contextPath;
+    
+    @Value("${local.fileserver.path}")
+    private String fileServerPath;
     /**
-     * 上传（新增或更新）证书信息，包括信息及评书文件
+     * 
+     * <p>Title: uploadData</p>
+     * <p>Description: 上传（新增或更新）证书信息，包括信息及评书文件</p>
      * @param json
      * @return
      */
@@ -45,7 +52,7 @@ public class CertificateService {
 		JSONObject obj = JSONObject.parseObject(json);
 		String topic = BaseUtil.trim(obj.get("topic"));
 		
-		String httpPath = serverConfig.getUrl() + contextPath;
+		String httpPath = serverConfig.getUrl() + contextPath + "/" + fileServerPath + "/";
 		
 		CertificateInfo cert = new CertificateInfo();
 		
@@ -56,7 +63,8 @@ public class CertificateService {
 			String type = BaseUtil.trim(data.get("type"));
 			int id = Integer.parseInt(BaseUtil.trim(data.get("sourceKey"),"0"));
 			//文件夹分类路径
-			String typePath = "/" + type + "/" + BaseUtil.trim(data.get("time"));
+			//String typePath = fileServerPath + "/" + type + "/" + BaseUtil.trim(data.get("time"));
+			String typePath =  type + "/" + BaseUtil.trim(data.get("time"));
 			//组装数据
 			cert.setUserName(BaseUtil.trim(data.get("userName")));
 			cert.setCountry(BaseUtil.trim(data.get("country")));

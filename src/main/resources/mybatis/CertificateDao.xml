@@ -41,14 +41,15 @@
 		<where>
 			<if test="null != startTime">time &gt;= #{startTime} and </if>			
 			<if test="null != orgName">org_name =#{orgName} and </if>
+			<if test="null != orgUnit and '' != orgUnit">org_unit LIKE CONCAT(CONCAT('%',#{orgUnit},'%')) and </if>
 			<if test="null != type">
 				<if test="'server' == type">
 					 type =#{type} and
-					 <if test="null != userName">ip LIKE #{userName} and </if>
+					 <if test="null != ip">ip LIKE CONCAT(CONCAT('%',#{ip},'%')) and </if>
 				</if>
 				<if test="'ca' == type or 'client' == type">
 					 type =#{type} and
-					 <if test="null != userName">user_name LIKE #{userName} and </if>
+					 <if test="null != userName">user_name LIKE CONCAT(CONCAT('%',#{userName},'%')) and </if>
 				</if>
 			 </if>
 			<if test="null != endTime">time &lt;= #{endTime}</if>
@@ -61,14 +62,15 @@
 		<where>
 			<if test="null != startTime">time &gt;= #{startTime} and </if>			
 			<if test="null != orgName">org_name =#{orgName} and </if>
+			<if test="null != orgUnit and '' != orgUnit">org_unit LIKE CONCAT(CONCAT('%',#{orgUnit},'%')) and </if>
 			<if test="null != type">
 				<if test="'server' == type">
 					 type =#{type} and
-					 <if test="null != userName">ip LIKE #{userName} and </if>
+					 <if test="null != ip">ip LIKE CONCAT(CONCAT('%',#{ip},'%')) and </if>
 				</if>
 				<if test="'ca' == type or 'client' == type">
-					 type =#{type} and
-					 <if test="null != userName">user_name LIKE #{userName} and </if>
+					 type =#{type} and 
+					 <if test="null != userName">user_name LIKE CONCAT(CONCAT('%',#{userName},'%')) and </if>
 				</if>
 			 </if>
 			<if test="null != endTime">time &lt;= #{endTime}</if>
@@ -130,14 +132,14 @@
 			<if test="null != certFile">#{certFile},</if>
 			<if test="null != certFileContent">#{certFileContent},</if>
 		</trim>	
-	    <where>
+	    <!-- <where>
 			<if test="'server' == type">
 				 NOT EXISTS(select t1.id from com_info_certificate t1 WHERE t1.ip = #{ip} and t1.type = #{type})
 			</if>
 			<if test="'client' == type">
 				 NOT EXISTS(select t1.id from com_info_certificate t1 WHERE t1.user_name = #{userName} and t1.type = #{type})
 			</if>
-		</where>	
+		</where>	 -->
 	</insert>
 	
 	<update id="update" parameterType="com.zhichenhaixin.certificatemanage.model.CertificateInfo">
